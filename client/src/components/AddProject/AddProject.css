@@ -1,0 +1,28 @@
+.add-project {
+    margin-bottom: 20px;
+}
+
+.add-project form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-project input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-project button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.add-project button:hover {
+    background-color: #0056b3;
+}

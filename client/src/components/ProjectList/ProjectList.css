@@ -1,0 +1,9 @@
+.project-list {
+    padding: 20px;
+}
+
+.project-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
