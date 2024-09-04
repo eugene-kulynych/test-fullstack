@@ -6,11 +6,13 @@ Brief description of what the project does and its purpose.
 
 ## How to Run the Project
 
-1. **Set Environment Variables**
+1. **Pull this repo to your computer**
+
+1.1 **Set Environment Variables**
 
    Create a `.env` file in the root directory of the project and set the required environment variables. Make sure to provide all necessary configuration values.
 
-2. **Start the Project**
+2. **Start the Project locally**
 
    In the root folder, run the following command to build and start the Docker containers:
    ```bash
