@@ -17,7 +17,9 @@ Brief description of what the project does and its purpose.
    In the root folder, run the following command to build and start the Docker containers:
    ```bash
    docker compose up --build
+3. **Open browser**
 
+   Hit `http://localhost:3000` and start exploring the app
 ## How to Stop the Project
 
 1. **Stop the Containers**
