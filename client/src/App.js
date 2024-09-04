@@ -18,7 +18,7 @@ function App() {
     const token = storage.getItem("token");
 
     token && dispatch(loginAction({ token }));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

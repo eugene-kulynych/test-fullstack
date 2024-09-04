@@ -4,6 +4,7 @@ import MyModal from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import storage from "../../helpers/localStorage";
 import { logoutAction } from "../../store/actions/userActions";
+import './Header.css'
 
 const Header = () => {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);

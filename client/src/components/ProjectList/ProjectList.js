@@ -1,40 +1,36 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { toast } from "react-toastify";
 import ProjectItem from "../ProjectItem/ProjectItem";
 import AddProject from "../AddProject/AddProject";
 import { getAllProjects } from "../../store/actions/getAllProjects";
-import { toast } from 'react-toastify';
+import { addProject, removeProject } from "../../helpers/request";
 import "./ProjectList.css";
-
 
 const ProjectList = () => {
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects);
-  const notify = () => toast("Added");
+  const notify = (msg) => toast(msg);
 
   useEffect(() => {
     dispatch(getAllProjects());
-
-    console.log(projects)
-  }, []);
+  }, [dispatch]);
 
   const handleAdd = async (repoPath) => {
-    const [owner, repo] = repoPath.split('/');
+    const [owner, repo] = repoPath.split("/");
     try {
-      const response = await axios.post('http://localhost:5001/api/projects', {
+      const response = await addProject({
         owner,
-        repo
-      })
+        repo,
+      });
 
       if (response.status === 201) {
         dispatch(getAllProjects());
       }
-      notify()
+      notify("Added");
     } catch (e) {
-      console.log()
+      notify(`Error: ${e.response.data.message}`);
     }
-
   };
 
   const handleUpdate = (project) => {
@@ -42,9 +38,17 @@ const ProjectList = () => {
     console.log("Update project", project);
   };
 
-  const handleDelete = (project) => {
-    // Implement delete logic
-    console.log("Delete project", project);
+  const handleDelete = async (id) => {
+    try {
+      const response = await removeProject(id);
+
+      if (response.status === 200) {
+        dispatch(getAllProjects());
+      }
+      notify(response.data.message);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -54,7 +58,7 @@ const ProjectList = () => {
       <div className="project-list-container">
         {projects.map((project, index) => (
           <ProjectItem
-            key={index}
+            key={project._id}
             project={project}
             onUpdate={handleUpdate}
             onDelete={handleDelete}

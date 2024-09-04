@@ -3,13 +3,13 @@ import express from 'express';
 import userRoutes from './routes/userRoutes.mjs';
 import projectsRoutes from "./routes/projectsRoutes.mjs";
 import cors from 'cors';
-import { mongoDB } from "./clients/mongoClient.mjs";
+import { mongoDBClient } from "./clients/mongoClient.mjs";
 
 dotenv.config({path: '../.env'})
 
 const PORT = process.env.PORT || 5000;
 
-mongoDB.connect();
+mongoDBClient.connect();
 
 const app = express();
 app.use(cors());

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { register } from "../../helpers/request";
 import "./Registration.css";
-import {toast} from "react-toastify";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -14,12 +14,12 @@ const Registration = () => {
     event.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5001/api/register", {
+      const res = await register({
         email,
         password,
       });
       if (res.status === 201) {
-        notify('Registration was successful');
+        notify("Registration was successful");
 
         setTimeout(() => {
           navigate("/");

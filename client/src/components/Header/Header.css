@@ -1,0 +1,36 @@
+.header-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-button {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.register-button:hover {
+    background-color: #0056b3;
+}
+
+.header-button:last-child {
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #007bff;
+}
+
+.header-button:last-child:hover {
+    background-color: #e0e0e0;
+}

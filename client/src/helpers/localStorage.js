@@ -1,4 +1,3 @@
-
 class LocalStorageClient {
     setItem = (key, value) => {
         localStorage.setItem(key, value);

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
-import axios from "axios";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { loginAction } from "../../store/actions/userActions";
 import storage from "../../helpers/localStorage";
+import { login } from "../../helpers/request";
+import "./Modal.css";
 
-// Обов'язково прив'яжіть модальне вікно до root елемента
 Modal.setAppElement("#root");
 
 const MyModal = ({ isOpen, onClose }) => {
+  const notify = (msg) => toast(msg);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +18,7 @@ const MyModal = ({ isOpen, onClose }) => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5001/api/login", {
+      const res = await login({
         email,
         password,
       });
@@ -27,10 +28,12 @@ const MyModal = ({ isOpen, onClose }) => {
 
         storage.setItem("token", token);
 
+        notify("Welcome");
         onClose();
       }
     } catch (e) {
       console.log(e);
+      notify(`Error: ${e.message}`);
     } finally {
     }
   };
